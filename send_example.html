@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.1.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="./coordinator.js"></script>
+    <style>
+        .navigationCard {
+            width: 100%;
+            max-width: 800px;
+            margin:0 auto;
+        }
+        .expandedTextField {
+            width: 250px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .generalTextField {
+            width: 100px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .customTextField {
+            width: 80%;
+        }
+        .rowContainer {
+            display: flex;
+            align-items: center;
+            min-height: 92px;
+        }
+        .rowItem {
+            display:inline-block;
+        }
+        .sendButton {
+            position: absolute;
+            right: 0px;
+            margin-right: 30px;
+        }
+        .spinner {
+            position: absolute;
+            right: 0px;
+            margin-right: 30px;
+            top: 0px;
+            margin-top: 25px;
+            visibility: hidden;
+        }
+        .radioOption {
+            margin-left: 30px;
+        }
+        #snackbar {
+            visibility: hidden;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            top: 30px;
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.2s, fadeout 0.5s 1.5s;
+            animation: fadein 0.2s, fadeout 0.5s 1.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="navigationCard">
+        <div class="collection-header"><h4>Send Message</h4></div>
+        <div class="row rowContainer collection-item">
+            <div class="customTextField rowItem">
+                <div class="input-field inline customTextField">
+                    <input id="customField" type="text">
+                    <label class="active" for="addItemField">Text</label>
+                </div>
+            </div>
+            <button onclick="sendCustom()" class="waves-effect waves-light btn rowItem sendButton">
+                <i class="material-icons right">send</i>
+                send
+            </button>
+        </div>
+    </div>
+    <div id="snackbar"></div>
+    <script>
+    var sendCustom = function() {
+        Coordinator.send(valueFor("customField"), null);
+    }
+    </script>
+</body>
