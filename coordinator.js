@@ -1,7 +1,7 @@
 'use strict';
 
-var publishKey = 'pub-c-2725239f-4145-4fef-81e3-b48575bf7877';
-var subscribeKey = 'sub-c-f6e9a4fc-1d08-11e8-84be-f641dd32cbde';
+var publishKey = 'pub-c-2725239f-4145-4fef-81e3-ayylmao';
+var subscribeKey = 'sub-c-f6e9a4fc-1d08-11e8-84be-ayymao';
 
 var Coordinator = Coordinator();
 var valueFor = function(id) { return document.getElementById(id).value };
